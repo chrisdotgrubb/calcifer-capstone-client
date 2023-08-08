@@ -13,6 +13,7 @@ export default function Navbar() {
 					<Nav className={"me-auto"}>
 						<Nav.Link href={"/store"}>Store</Nav.Link>
 						<Nav.Link href={"/orders"}>Orders</Nav.Link>
+						<Nav.Link href={"/manage"}>Manage</Nav.Link>
 					</Nav>
 					<Nav>
 						<Nav.Link href={"/cart"}>Cart</Nav.Link>

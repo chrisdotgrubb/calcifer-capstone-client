@@ -3,6 +3,8 @@ import Container from "react-bootstrap/Container";
 import {Route, Routes} from "react-router-dom";
 import CartPage from "./pages/CartPage.tsx";
 import HomePage from "./pages/HomePage.tsx";
+import ManagePage from "./pages/ManagePage.tsx";
+import ManageAddPage from "./pages/ManageAddPage.tsx";
 import OrdersPage from "./pages/OrdersPage.tsx";
 import StorePage from "./pages/StorePage.tsx";
 
@@ -16,6 +18,9 @@ export default function App() {
 					<Route path={"/store"} element={<StorePage />} />
 					<Route path={"/orders"} element={<OrdersPage />} />
 					<Route path={"/cart"} element={<CartPage />} />
+					
+					<Route path={"/manage"} element={<ManagePage />} />
+					<Route path={"/manage/add"} element={<ManageAddPage />} />
 				</Routes>
 			</Container>
 		</>
