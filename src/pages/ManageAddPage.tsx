@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import {ChangeEvent, useState} from "react";
 import AddItemForm from "../components/AddItemForm.tsx";
 
 interface IItem {
@@ -17,7 +17,7 @@ export default function ManageAddPage() {
 	};
 	const [item, setItem] = useState(defaultItem);
 	
-	function handleChange(evt: React.FormEvent<HTMLInputElement> | React.FormEvent<HTMLSelectElement>): void {
+	function handleChange(evt: ChangeEvent<HTMLInputElement>): void {
 		if (evt.currentTarget.name === "price") {
 			// only digits and up to 2 decimal places allowed
 			if (!/^\d{0,4}(\.\d{0,2})?$/.test(evt.currentTarget.value)) return;
@@ -27,6 +27,7 @@ export default function ManageAddPage() {
 	
 	return (
 		<>
+			<h1>Add an item</h1>
 			<AddItemForm item={item} handleChange={handleChange} />
 		</>
 	);
