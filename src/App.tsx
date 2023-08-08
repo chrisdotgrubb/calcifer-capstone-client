@@ -21,6 +21,7 @@ export default function App() {
 					
 					<Route path={"/manage"} element={<ManagePage />} />
 					<Route path={"/manage/add"} element={<ManageAddPage />} />
+					<Route path={"/manage/:itemId"} element={<ManagePage />} />
 				</Routes>
 			</Container>
 		</>

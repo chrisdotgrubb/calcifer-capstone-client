@@ -1,5 +1,5 @@
 import {ChangeEvent, useState} from "react";
-import AddItemForm from "../components/AddItemForm.tsx";
+import AddItemForm from "../components/manage/AddItemForm.tsx";
 
 interface IItem {
 	name: string,
