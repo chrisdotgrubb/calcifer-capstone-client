@@ -19,7 +19,6 @@ export default function AddItemForm({
 										setFormItem,
 										defaultFormItem
 									}: AddItemFormProps) {
-	// const context: IContext = useItemsContext();
 	
 	function handleSubmit(evt: FormEvent): void {
 		evt.preventDefault();

@@ -1,18 +1,17 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import {ChangeEvent, useState} from "react";
-import {useLocation} from "react-router-dom";
+import {ChangeEvent, FormEvent, useState} from "react";
+import {useLocation, useNavigate} from "react-router-dom";
+import axios from "axios";
+import {IItem, useItemsContext} from "../../context/Context.ts";
 
-export interface IFormItem {
-	name: string;
-	description: string;
-	price: number | string;
-	img: string;
-}
 
+const URL = "http://localhost:3001";
 export default function EditItemPage() {
 	const editedItem = useLocation().state.item;
-	const [formItem, setFormItem] = useState(editedItem as IFormItem);
+	const [formItem, setFormItem] = useState(editedItem as IItem);
+	const context = useItemsContext();
+	const navigate = useNavigate();
 	
 	function handleChange(evt: ChangeEvent<HTMLInputElement>): void {
 		if (evt.currentTarget.name === "price") {
@@ -22,8 +21,26 @@ export default function EditItemPage() {
 		setFormItem({...formItem, [evt.currentTarget.name]: evt.currentTarget.value});
 	}
 	
+	async function handleEdit(updatedItem: IItem) {
+		try {
+			await axios.put(`${URL}/api/items/${updatedItem._id}/`, updatedItem);
+			const newItems = context.items.map(i => {
+				return i._id !== updatedItem._id ? i : updatedItem;
+			});
+			context.setItems(newItems);
+		} catch (err) {
+			console.log(err);
+		}
+	}
+	
+	function handleSubmit(evt: FormEvent) {
+		evt.preventDefault();
+		handleEdit(formItem);
+		navigate("/manage");
+	}
+	
 	return (
-		<Form>
+		<Form onSubmit={handleSubmit}>
 			<Form.Group className="mb-3">
 				<Form.Label>Name</Form.Label>
 				<Form.Control
