@@ -7,10 +7,11 @@ import ManagePage from "./pages/ManagePage.tsx";
 import ManageAddPage from "./pages/ManageAddPage.tsx";
 import OrdersPage from "./pages/OrdersPage.tsx";
 import StorePage from "./pages/StorePage.tsx";
+import {ItemsProvider} from "./context/ItemsContext.tsx";
 
 export default function App() {
 	return (
-		<>
+		<ItemsProvider>
 			<Navbar />
 			<Container>
 				<Routes>
@@ -24,6 +25,6 @@ export default function App() {
 					<Route path={"/manage/:itemId"} element={<ManagePage />} />
 				</Routes>
 			</Container>
-		</>
+		</ItemsProvider>
 	);
 }
