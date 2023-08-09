@@ -18,8 +18,16 @@ export default function AddItemPage() {
 	const context: IContext = useItemsContext();
 	
 	async function handleCreate(createdItem: IItem) {
+		const itemToSend: {
+			_id?: string,
+			name: string,
+			description: string,
+			price: string | number,
+			img: string
+		} = {...createdItem};
+		delete itemToSend._id;
 		try {
-			const response: AxiosResponse<IItem> = await axios.post(`${URL}/api/items/`, createdItem);
+			const response: AxiosResponse<IItem> = await axios.post(`${URL}/api/items/`, itemToSend);
 			context.setItems([...context.items, response.data]);
 		} catch (err) {
 			console.log(err);

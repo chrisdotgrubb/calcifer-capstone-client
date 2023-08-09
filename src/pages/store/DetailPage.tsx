@@ -2,10 +2,14 @@ import {useLocation} from "react-router-dom";
 import {IItem} from "../../context/Context.ts";
 import Container from "react-bootstrap/Container";
 import {Col, Row} from "react-bootstrap";
-
+import {useContext} from "react";
+import {CartContext} from "../../context/CartContext.tsx";
 
 export default function DetailPage() {
 	const currItem: IItem = useLocation().state.item;
+	const cart = useContext(CartContext);
+	const currItemCart = cart.cartItems.find(item => item.id === currItem._id) || 0;
+	
 	return (
 		<Container>
 			<Row className={"d-flex justify-content-center"}>
@@ -21,6 +25,7 @@ export default function DetailPage() {
 					<h3>${currItem.price}</h3>
 				</Col>
 			</Row>
+			<h1 className={"text-danger"}>{currItemCart ? currItemCart.qty : 0} in cart</h1>
 		</Container>
 	);
 }
