@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
 import Container from "react-bootstrap/Container";
-import ItemIndexCard from "../components/manage/ItemIndexCard.tsx";
-import {useItemsContext} from "../context/Context.ts";
+import ItemIndexCard from "../../components/manage/ItemIndexCard.tsx";
+import {useItemsContext} from "../../context/Context.ts";
 
 interface IContext {
 	items: {

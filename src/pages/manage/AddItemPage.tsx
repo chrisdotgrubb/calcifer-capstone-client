@@ -1,5 +1,5 @@
 import {ChangeEvent, useState} from "react";
-import AddItemForm from "../components/manage/AddItemForm.tsx";
+import AddItemForm from "../../components/manage/AddItemForm.tsx";
 
 export interface IFormItem {
 	name: string,
@@ -8,7 +8,7 @@ export interface IFormItem {
 	img: string,
 }
 
-export default function ManageAddPage() {
+export default function AddItemPage() {
 	const defaultFormItem: IFormItem = {
 		name: "",
 		description: "",

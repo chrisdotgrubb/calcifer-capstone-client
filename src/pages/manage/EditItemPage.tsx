@@ -1,15 +1,28 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import {ChangeEventHandler} from "react";
-import {IFormItem} from "../../pages/manage/AddItemPage.tsx";
+import {ChangeEvent, useState} from "react";
+import {useLocation} from "react-router-dom";
 
-
-interface AddItemFormProps {
-	formItem: IFormItem;
-	handleChange: ChangeEventHandler<HTMLInputElement>;
+export interface IFormItem {
+	name: string,
+	description: string,
+	price: number | string,
+	img: string,
 }
 
-export default function AddItemForm({formItem, handleChange}: AddItemFormProps) {
+export default function EditItemPage() {
+	const editedItem = useLocation().state.item;
+	console.log(editedItem);
+	const [formItem, setFormItem] = useState(editedItem as IFormItem);
+	
+	function handleChange(evt: ChangeEvent<HTMLInputElement>): void {
+		if (evt.currentTarget.name === "price") {
+			// only digits and up to 2 decimal places allowed
+			if (!/^\d{0,4}(\.\d{0,2})?$/.test(evt.currentTarget.value)) return;
+		}
+		setFormItem({...formItem, [evt.currentTarget.name]: evt.currentTarget.value});
+	}
+	
 	return (
 		<Form>
 			<Form.Group className="mb-3">

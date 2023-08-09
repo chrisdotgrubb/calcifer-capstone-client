@@ -21,7 +21,7 @@ export default function ItemIndexCard({item}: ItemIndexCardProps) {
 				<Card.Text>
 					{item.description}
 				</Card.Text>
-				<Link to={`/manage/${item._id}`} state={item}>
+				<Link to={`/manage/${item._id}`} state={{item}}>
 					<Button variant="primary">Edit</Button>
 				</Link>
 			</Card.Body>
