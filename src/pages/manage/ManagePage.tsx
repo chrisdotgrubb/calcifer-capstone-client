@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import Container from "react-bootstrap/Container";
-import ItemIndexCard from "../../components/manage/ItemIndexCard.tsx";
+import ItemCard from "../../components/manage/ItemCard.tsx";
 import {useItemsContext} from "../../context/Context.ts";
 import {IContext} from "../../context/Context.tsx";
 
@@ -9,7 +9,7 @@ export default function ManagePage() {
 	const context: IContext = useItemsContext();
 	
 	const allItems = (context.items.length > 0) ?
-		context.items.map(item => <ItemIndexCard key={item._id} item={item} />) :
+		context.items.map(item => <ItemCard key={item._id} item={item} />) :
 		[];
 	
 	return (
