@@ -1,20 +1,14 @@
 import {ChangeEvent, useState} from "react";
 import AddItemForm from "../../components/manage/AddItemForm.tsx";
-import axios from "axios";
-import {useItemsContext} from "../../context/Context.ts";
-import {IContext} from "../../context/Context.tsx";
+import axios, {AxiosResponse} from "axios";
+import {IContext, IItem, useItemsContext} from "../../context/Context.ts";
 
-export interface IFormItem {
-	name: string,
-	description: string,
-	price: number | string,
-	img: string,
-}
 
 const URL = "http://localhost:3001";
 
 export default function AddItemPage() {
-	const defaultFormItem: IFormItem = {
+	const defaultFormItem: IItem = {
+		_id: "",
 		name: "",
 		description: "",
 		price: "",
@@ -23,9 +17,9 @@ export default function AddItemPage() {
 	const [formItem, setFormItem] = useState(defaultFormItem);
 	const context: IContext = useItemsContext();
 	
-	async function handleCreate(createdItem: IFormItem) {
+	async function handleCreate(createdItem: IItem) {
 		try {
-			const response = await axios.post(`${URL}/api/items/`, createdItem);
+			const response: AxiosResponse<IItem> = await axios.post(`${URL}/api/items/`, createdItem);
 			context.setItems([...context.items, response.data]);
 		} catch (err) {
 			console.log(err);

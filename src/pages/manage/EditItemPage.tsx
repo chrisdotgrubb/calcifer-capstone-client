@@ -4,15 +4,14 @@ import {ChangeEvent, useState} from "react";
 import {useLocation} from "react-router-dom";
 
 export interface IFormItem {
-	name: string,
-	description: string,
-	price: number | string,
-	img: string,
+	name: string;
+	description: string;
+	price: number | string;
+	img: string;
 }
 
 export default function EditItemPage() {
 	const editedItem = useLocation().state.item;
-	console.log(editedItem);
 	const [formItem, setFormItem] = useState(editedItem as IFormItem);
 	
 	function handleChange(evt: ChangeEvent<HTMLInputElement>): void {

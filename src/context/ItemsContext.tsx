@@ -1,6 +1,6 @@
 import {createContext, ReactNode, useEffect, useState} from "react";
 import axios from "axios";
-import {IContext} from "./Context.ts";
+import {IContext, IItem} from "./Context.ts";
 
 interface ItemsProviderProps {
 	children: ReactNode;
@@ -13,7 +13,7 @@ export const ItemsContext = createContext({} as IContext);
 
 
 export function ItemsProvider({children}: ItemsProviderProps) {
-	const [items, setItems] = useState([]);
+	const [items, setItems] = useState([] as IItem[]);
 	
 	async function getItems() {
 		try {
@@ -24,7 +24,7 @@ export function ItemsProvider({children}: ItemsProviderProps) {
 		}
 	}
 	
-	const context = {
+	const context: IContext = {
 		items,
 		setItems,
 	};

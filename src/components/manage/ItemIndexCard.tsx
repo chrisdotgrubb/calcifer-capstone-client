@@ -1,15 +1,10 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import {Link} from "react-router-dom";
+import {IItem} from "../../context/Context.ts";
 
 interface ItemIndexCardProps {
-	item: {
-		_id: string;
-		name: string;
-		description: string;
-		price: number;
-		img: string;
-	};
+	item: IItem;
 }
 
 export default function ItemIndexCard({item}: ItemIndexCardProps) {
