@@ -1,7 +1,7 @@
 import {ChangeEvent, useState} from "react";
 import AddItemForm from "../../components/manage/AddItemForm.tsx";
 import axios, {AxiosResponse} from "axios";
-import {IContext, IItem, useItemsContext} from "../../context/Context.ts";
+import {IItem, IItemsContext, useItemsContext} from "../../context/Context.ts";
 
 
 const URL = "http://localhost:3001";
@@ -15,7 +15,7 @@ export default function AddItemPage() {
 		img: "",
 	};
 	const [formItem, setFormItem] = useState(defaultFormItem);
-	const context: IContext = useItemsContext();
+	const context: IItemsContext = useItemsContext();
 	
 	async function handleCreate(createdItem: IItem) {
 		const itemToSend: {

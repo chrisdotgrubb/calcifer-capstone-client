@@ -1,6 +1,6 @@
 import {createContext, ReactNode, useEffect, useState} from "react";
 import axios from "axios";
-import {IContext, IItem} from "./Context.ts";
+import {IItem, IItemsContext} from "./Context.ts";
 
 interface ItemsProviderProps {
 	children: ReactNode;
@@ -9,7 +9,7 @@ interface ItemsProviderProps {
 
 const URL = "http://localhost:3001";
 
-export const ItemsContext = createContext({} as IContext);
+export const ItemsContext = createContext({} as IItemsContext);
 
 
 export function ItemsProvider({children}: ItemsProviderProps) {
@@ -24,7 +24,7 @@ export function ItemsProvider({children}: ItemsProviderProps) {
 		}
 	}
 	
-	const context: IContext = {
+	const context: IItemsContext = {
 		items,
 		setItems,
 	};

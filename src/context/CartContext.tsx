@@ -1,26 +1,12 @@
 import {createContext, ReactNode, useState} from "react";
+import {ICartContext, ICartItem} from "./Context.ts";
 
 
 interface CartProviderProps {
 	children: ReactNode;
 }
 
-
-interface ICart {
-	cartQty: number;
-	cartItems: ICartItem[];
-	getItemQty: (id: string) => number;
-	increaseCartQty: (id: string) => void;
-	decreaseCartQty: (id: string) => void;
-	removeFromCart: (id: string) => void;
-}
-
-interface ICartItem {
-	id: string;
-	qty: number;
-}
-
-export const CartContext = createContext({} as ICart);
+export const CartContext = createContext({} as ICartContext);
 
 
 export function CartProvider({children}: CartProviderProps) {

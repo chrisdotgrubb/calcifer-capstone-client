@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import {Link} from "react-router-dom";
-import {IContext, IItem, useItemsContext} from "../../context/Context.ts";
+import {IItem, IItemsContext, useItemsContext} from "../../context/Context.ts";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
 
@@ -12,7 +12,7 @@ interface ItemIndexCardProps {
 const URL = "http://localhost:3001";
 
 export default function ItemCard({item}: ItemIndexCardProps) {
-	const context: IContext = useItemsContext();
+	const context: IItemsContext = useItemsContext();
 	
 	
 	async function handleDelete(deletedItem: IItem) {
