@@ -1,19 +1,11 @@
 import {createContext, ReactNode, useEffect, useState} from "react";
 import axios from "axios";
+import {IContext} from "./Context.ts";
 
 interface ItemsProviderProps {
 	children: ReactNode;
 }
 
-interface IContext {
-	items: {
-		_id: string
-		name: string
-		description: string
-		price: number
-		img: string
-	}[];
-}
 
 const URL = "http://localhost:3001";
 
@@ -32,7 +24,11 @@ export function ItemsProvider({children}: ItemsProviderProps) {
 		}
 	}
 	
-	const context = {items};
+	const context = {
+		items,
+		setItems,
+	};
+	
 	useEffect(() => {
 		getItems();
 	}, []);

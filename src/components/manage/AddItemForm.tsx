@@ -1,17 +1,34 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import {ChangeEventHandler} from "react";
+import {ChangeEventHandler, Dispatch, FormEvent, SetStateAction} from "react";
 import {IFormItem} from "../../pages/manage/AddItemPage.tsx";
 
 
 interface AddItemFormProps {
 	formItem: IFormItem;
+	setFormItem: Dispatch<SetStateAction<IFormItem>>;
 	handleChange: ChangeEventHandler<HTMLInputElement>;
+	handleCreate: (createdItem: IFormItem) => Promise<void>;
+	defaultFormItem: IFormItem;
 }
 
-export default function AddItemForm({formItem, handleChange}: AddItemFormProps) {
+export default function AddItemForm({
+										formItem,
+										handleChange,
+										handleCreate,
+										setFormItem,
+										defaultFormItem
+									}: AddItemFormProps) {
+	// const context: IContext = useItemsContext();
+	
+	function handleSubmit(evt: FormEvent): void {
+		evt.preventDefault();
+		handleCreate(formItem);
+		setFormItem(defaultFormItem);
+	}
+	
 	return (
-		<Form>
+		<Form onSubmit={handleSubmit}>
 			<Form.Group className="mb-3">
 				<Form.Label>Name</Form.Label>
 				<Form.Control

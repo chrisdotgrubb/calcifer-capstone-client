@@ -2,16 +2,8 @@ import {Link} from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import ItemIndexCard from "../../components/manage/ItemIndexCard.tsx";
 import {useItemsContext} from "../../context/Context.ts";
+import {IContext} from "../../context/Context.tsx";
 
-interface IContext {
-	items: {
-		_id: string
-		name: string
-		description: string
-		price: number
-		img: string
-	}[];
-}
 
 export default function ManagePage() {
 	const context: IContext = useItemsContext();

@@ -1,5 +1,8 @@
 import {ChangeEvent, useState} from "react";
 import AddItemForm from "../../components/manage/AddItemForm.tsx";
+import axios from "axios";
+import {useItemsContext} from "../../context/Context.ts";
+import {IContext} from "../../context/Context.tsx";
 
 export interface IFormItem {
 	name: string,
@@ -7,6 +10,8 @@ export interface IFormItem {
 	price: number | string,
 	img: string,
 }
+
+const URL = "http://localhost:3001";
 
 export default function AddItemPage() {
 	const defaultFormItem: IFormItem = {
@@ -16,6 +21,16 @@ export default function AddItemPage() {
 		img: "",
 	};
 	const [formItem, setFormItem] = useState(defaultFormItem);
+	const context: IContext = useItemsContext();
+	
+	async function handleCreate(createdItem: IFormItem) {
+		try {
+			const response = await axios.post(`${URL}/api/items/`, createdItem);
+			context.setItems([...context.items, response.data]);
+		} catch (err) {
+			console.log(err);
+		}
+	}
 	
 	function handleChange(evt: ChangeEvent<HTMLInputElement>): void {
 		if (evt.currentTarget.name === "price") {
@@ -28,7 +43,9 @@ export default function AddItemPage() {
 	return (
 		<>
 			<h1>Add an item</h1>
-			<AddItemForm formItem={formItem} handleChange={handleChange} />
+			<AddItemForm
+				formItem={formItem} handleChange={handleChange} handleCreate={handleCreate} setFormItem={setFormItem}
+				defaultFormItem={defaultFormItem} />
 		</>
 	);
 }
