@@ -5,7 +5,7 @@ import NavbarBS from "react-bootstrap/Navbar";
 
 export default function Navbar() {
 	return (
-		<NavbarBS expand="lg" sticky={"top"}>
+		<NavbarBS expand="sm" sticky={"top"}>
 			<Container>
 				<NavbarBS.Brand href="/">Home</NavbarBS.Brand>
 				<NavbarBS.Toggle />

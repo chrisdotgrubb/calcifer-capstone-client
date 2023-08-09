@@ -1,5 +1,5 @@
-import {useItemsContext} from "../context/Context.ts";
-import ItemCard from "../components/store/ItemCard.tsx";
+import {useItemsContext} from "../../context/Context.ts";
+import ItemCard from "../../components/store/ItemCard.tsx";
 
 export default function StorePage() {
 	const context = useItemsContext();
