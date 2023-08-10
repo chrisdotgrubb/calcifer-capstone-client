@@ -17,19 +17,19 @@ export function CartProvider({children}: CartProviderProps) {
 	const cartQty = cartItems.reduce(((acc, item) => item.qty + acc), 0);
 	
 	function getItemQty(id: string) {
-		return cartItems.find(item => item.id === id)?.qty || 0;
+		return cartItems.find(item => item._id === id)?.qty || 0;
 	}
 	
 	function increaseCartQty(id: string) {
 		let newCartItems: ICartItem[] = [];
 		
-		if (!cartItems.find(item => item.id === id)) {
-			newCartItems = [...cartItems, {id, qty: 1}];
+		if (!cartItems.find(item => item._id === id)) {
+			newCartItems = [...cartItems, {_id: id, qty: 1}];
 		} else {
 			newCartItems = cartItems.map(item => {
-				if (item.id === id) {
+				if (item._id === id) {
 					return {
-						id, qty: item.qty + 1
+						_id: id, qty: item.qty + 1
 					};
 				} else return item;
 			});
@@ -41,13 +41,13 @@ export function CartProvider({children}: CartProviderProps) {
 	function decreaseCartQty(id: string) {
 		let newCartItems: ICartItem[];
 		
-		if (!cartItems.find(item => item.id === id)) {
+		if (!cartItems.find(item => item._id === id)) {
 			newCartItems = [...cartItems];
 		} else {
 			newCartItems = cartItems.map(item => {
-				if (item.id === id) {
+				if (item._id === id) {
 					return {
-						id, qty: item.qty - 1
+						_id: id, qty: item.qty - 1
 					};
 				} else return item;
 			});
@@ -58,7 +58,7 @@ export function CartProvider({children}: CartProviderProps) {
 	}
 	
 	function removeFromCart(id: string) {
-		setCartItems(cartItems.filter(item => item.id !== id));
+		setCartItems(cartItems.filter(item => item._id !== id));
 	}
 	
 	

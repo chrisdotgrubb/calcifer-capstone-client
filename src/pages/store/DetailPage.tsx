@@ -10,7 +10,7 @@ import Image from "react-bootstrap/Image";
 export default function DetailPage() {
 	const currItem: IItem = useLocation().state.item;
 	const cart = useContext(CartContext);
-	const currItemCart = cart.cartItems.find(item => item.id === currItem._id) || 0;
+	const currItemCart = cart.cartItems.find(item => item._id === currItem._id) || 0;
 	const {getItemQty, increaseCartQty, decreaseCartQty, removeFromCart} = useContext(CartContext);
 	const qty = getItemQty(currItem._id);
 	return (

@@ -27,7 +27,7 @@ export default function ItemCard({item}: ItemCardProps) {
 				</Container>
 				<Container className={"d-flex flex-column align-items-center col-md-6"}>
 					{qty === 0 ?
-						<Button className={"w-25"} onClick={() => increaseCartQty(item._id)}>add to cart</Button>
+						<Button className={""} onClick={() => increaseCartQty(item._id)}>add to cart</Button>
 						
 						: <div>
 							<div className={"d-flex align-items-center"}>

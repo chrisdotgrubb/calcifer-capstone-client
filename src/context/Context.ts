@@ -1,5 +1,6 @@
 import {Dispatch, SetStateAction, useContext} from "react";
 import {ItemsContext} from "./ItemsContext.tsx";
+import {CartContext} from "./CartContext.tsx";
 
 
 // Items Context
@@ -23,7 +24,7 @@ export function useItemsContext() {
 
 // Cart Context
 export interface ICartItem {
-	id: string;
+	_id: string;
 	qty: number;
 }
 
@@ -34,4 +35,8 @@ export interface ICartContext {
 	increaseCartQty: (id: string) => void;
 	decreaseCartQty: (id: string) => void;
 	removeFromCart: (id: string) => void;
+}
+
+export function useCartContext() {
+	return useContext(CartContext);
 }

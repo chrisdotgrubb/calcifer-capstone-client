@@ -1,10 +1,21 @@
-import {useContext} from "react";
-import {CartContext} from "../context/CartContext.tsx";
+import ItemCard from "../components/store/ItemCard.tsx";
+import {useCartContext, useItemsContext} from "../context/Context.ts";
 
 export default function CartPage() {
-	const cart = useContext(CartContext);
-	console.log(cart);
+	const context = useItemsContext();
+	const cart = useCartContext();
+	const isEmpty = (!cart.cartItems || !cart.cartItems.length);
+	const allItems = cart.cartItems.map(item => {
+		const currItem = context.items.find(i => i._id === item._id);
+		if (!currItem) return;
+		return <ItemCard item={currItem} key={item._id} />;
+	});
 	return (
-		<h1>Cart</h1>
+		<>        {
+			isEmpty
+				? <h1>empty</h1>
+				: <h1>{allItems}</h1>
+		}
+		</>
 	);
 }
