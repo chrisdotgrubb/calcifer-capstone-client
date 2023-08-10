@@ -6,6 +6,7 @@ import {useContext} from "react";
 import {CartContext} from "../../context/CartContext.tsx";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
+import {formatPrice} from "../../util/format.ts";
 
 export default function DetailPage() {
 	const currItem: IItem = useLocation().state.item;
@@ -29,7 +30,7 @@ export default function DetailPage() {
 						<h2>{currItem.description}</h2>
 					</Col>
 					<Col md={6} className={"d-flex justify-content-center"}>
-						<h3>${currItem.price}</h3>
+						<h3>{formatPrice(currItem.price)}</h3>
 					</Col>
 				</Row>
 				<h1 className={"text-danger"}>{currItemCart ? currItemCart.qty : 0} in cart</h1>

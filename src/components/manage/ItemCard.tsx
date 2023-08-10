@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import {IItem, IItemsContext, useItemsContext} from "../../context/Context.ts";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
+import {formatPrice} from "../../util/format.ts";
 
 interface ItemIndexCardProps {
 	item: IItem;
@@ -33,7 +34,7 @@ export default function ItemCard({item}: ItemIndexCardProps) {
 		<Card style={{width: "15rem"}}>
 			<Card.Img variant="top" src={item.img} style={{height: "10rem"}} />
 			<Card.Body>
-				<Card.Title>{item.name} {item.price}</Card.Title>
+				<Card.Title>{item.name}<br />{formatPrice(item.price)}</Card.Title>
 				<Card.Text>
 					{item.description}
 				</Card.Text>

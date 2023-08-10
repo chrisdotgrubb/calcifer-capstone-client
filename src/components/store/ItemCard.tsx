@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 import {Link} from "react-router-dom";
 import {useContext} from "react";
 import {CartContext} from "../../context/CartContext.tsx";
+import {formatPrice} from "../../util/format.ts";
 
 interface ItemCardProps {
 	item: IItem;
@@ -40,7 +41,7 @@ export default function ItemCard({item}: ItemCardProps) {
 						</div>}
 				</Container>
 			</Card.Body>
-			<Card.Footer>${item.price}</Card.Footer>
+			<Card.Footer>{formatPrice(item.price)}</Card.Footer>
 		</Card>
 	);
 }

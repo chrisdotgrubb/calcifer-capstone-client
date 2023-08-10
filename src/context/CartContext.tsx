@@ -1,5 +1,5 @@
 import {createContext, ReactNode} from "react";
-import {ICartContext, ICartItem} from "./Context.ts";
+import {ICartContext, ICartItem, IItem, useItemsContext} from "./Context.ts";
 import useLocalStorage from "../hooks/useLocalStorage.ts";
 
 
@@ -12,13 +12,34 @@ export const CartContext = createContext({} as ICartContext);
 
 export function CartProvider({children}: CartProviderProps) {
 	const [cartItems, setCartItems] = useLocalStorage("cart", [] as ICartItem[]);
-	// const [cartItems, setCartItems] = useLocal([] as ICartItem[]);
 	
 	const cartQty = cartItems.reduce(((acc, item) => item.qty + acc), 0);
+	
+	const context = useItemsContext();
+	
+	const totalPrice = cartItems.reduce(((acc, item: ICartItem) => {
+		const currItem = getItemById(item._id);
+		if (!currItem) return acc;
+		const subTot = multiply(item.qty, Number(currItem.price));
+		return add(subTot, acc);
+	}), 0);
+	
+	function add(x: number, y: number): number {
+		return ((x * 100) + (y * 100)) / 100;
+	}
+	
+	function multiply(qty: number, price: number): number {
+		return Number(((qty * (price * 100)) / 100).toFixed(2));
+	}
+	
+	function getItemById(id: string): IItem | void {
+		return context.items.find(i => i._id === id);
+	}
 	
 	function getItemQty(id: string) {
 		return cartItems.find(item => item._id === id)?.qty || 0;
 	}
+	
 	
 	function increaseCartQty(id: string) {
 		let newCartItems: ICartItem[] = [];
@@ -66,6 +87,8 @@ export function CartProvider({children}: CartProviderProps) {
 		value={{
 			cartItems,
 			cartQty,
+			totalPrice,
+			getItemById,
 			getItemQty,
 			increaseCartQty,
 			decreaseCartQty,
