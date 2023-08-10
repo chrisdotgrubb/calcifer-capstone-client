@@ -12,7 +12,7 @@ interface ItemCardProps {
 
 export default function ItemCard({item}: ItemCardProps) {
 	const {getItemQty, increaseCartQty, decreaseCartQty, removeFromCart} = useContext(CartContext);
-	const quantity = getItemQty(item._id);
+	const qty = getItemQty(item._id);
 	return (
 		<Card className="text-center mt-3 mx-5">
 			<Card.Body>
@@ -26,13 +26,13 @@ export default function ItemCard({item}: ItemCardProps) {
 					</Link>
 				</Container>
 				<Container className={"d-flex flex-column align-items-center col-md-6"}>
-					{quantity === 0 ?
+					{qty === 0 ?
 						<Button className={"w-25"} onClick={() => increaseCartQty(item._id)}>add to cart</Button>
 						
 						: <div>
 							<div className={"d-flex align-items-center"}>
 								<Button onClick={() => decreaseCartQty(item._id)}>-</Button>
-								<div>{quantity} in cart</div>
+								<div>{qty} in cart</div>
 								<Button onClick={() => increaseCartQty(item._id)}>+</Button>
 							</div>
 							<Button
