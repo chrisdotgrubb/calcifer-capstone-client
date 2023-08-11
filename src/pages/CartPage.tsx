@@ -1,6 +1,15 @@
 import ItemCard from "../components/store/ItemCard.tsx";
-import {useCartContext} from "../context/Context.ts";
+import {ICartItem, useCartContext} from "../context/Context.ts";
 import {formatPrice} from "../util/format.ts";
+import axios from "axios";
+import Button from "react-bootstrap/Button";
+
+interface IReqData {
+	isDelivery: boolean;
+	cartItems: ICartItem[];
+}
+
+const URL = "http://localhost:3001";
 
 export default function CartPage() {
 	// const context = useItemsContext();
@@ -11,6 +20,24 @@ export default function CartPage() {
 		if (!currItem) return;
 		return <ItemCard item={currItem} key={item._id} />;
 	});
+	
+	async function handleCreateOrder() {
+		const data: IReqData = {
+			isDelivery: false,
+			cartItems: cart.cartItems,
+		};
+		try {
+			const response = await axios.post(`${URL}/api/orders`, data);
+			console.log(response);
+			if (response.status === 201) {
+				console.log("201!");
+				cart.emptyCart();
+			}
+		} catch (err) {
+			console.log(err);
+		}
+	}
+	
 	return (
 		<>        {
 			isEmpty
@@ -18,6 +45,7 @@ export default function CartPage() {
 				: <h1>{allItems}</h1>
 		}
 			<h1>{formatPrice(cart.totalPrice)}</h1>
+			<Button onClick={handleCreateOrder} disabled={cart.cartQty === 0}>Place order</Button>
 		</>
 	);
 }

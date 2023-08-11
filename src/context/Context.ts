@@ -37,6 +37,7 @@ export interface ICartContext {
 	increaseCartQty: (id: string) => void;
 	decreaseCartQty: (id: string) => void;
 	removeFromCart: (id: string) => void;
+	emptyCart: () => void;
 }
 
 export function useCartContext() {

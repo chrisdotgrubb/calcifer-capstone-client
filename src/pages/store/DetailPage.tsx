@@ -23,7 +23,7 @@ export default function DetailPage() {
 					</Col>
 				</Row>
 				<Row>
-					<Image src={`/${currItem.img}`} roundedCircle style={{height: "25rem"}} />
+					<Image src={currItem.img} roundedCircle style={{height: "25rem"}} />
 				</Row>
 				<Row className={"d-flex justify-content-center"}>
 					<Col md={6} className={"d-flex justify-content-center"}>

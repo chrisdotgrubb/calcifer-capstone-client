@@ -82,6 +82,10 @@ export function CartProvider({children}: CartProviderProps) {
 		setCartItems(cartItems.filter(item => item._id !== id));
 	}
 	
+	function emptyCart() {
+		setCartItems([] as ICartItem[]);
+	}
+	
 	
 	return <CartContext.Provider
 		value={{
@@ -93,6 +97,7 @@ export function CartProvider({children}: CartProviderProps) {
 			increaseCartQty,
 			decreaseCartQty,
 			removeFromCart,
+			emptyCart,
 		}}>
 		{children}
 	</CartContext.Provider>;
