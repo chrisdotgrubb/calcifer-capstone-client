@@ -8,10 +8,8 @@ import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 import {formatPrice} from "../../util/format.ts";
 
-export default function DetailPage() {
+export default function StoreDetailPage() {
 	const currItem: IItem = useLocation().state.item;
-	const cart = useContext(CartContext);
-	const currItemCart = cart.cartItems.find(item => item._id === currItem._id) || 0;
 	const {getItemQty, increaseCartQty, decreaseCartQty, removeFromCart} = useContext(CartContext);
 	const qty = getItemQty(currItem._id);
 	return (
@@ -33,7 +31,6 @@ export default function DetailPage() {
 						<h3>{formatPrice(currItem.price)}</h3>
 					</Col>
 				</Row>
-				<h1 className={"text-danger"}>{currItemCart ? currItemCart.qty : 0} in cart</h1>
 			</Container>
 			<Container className={"d-flex flex-column align-items-center col-md-6 text-center"}>
 				{qty === 0 ?

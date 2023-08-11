@@ -28,9 +28,7 @@ export default function CartPage() {
 		};
 		try {
 			const response = await axios.post(`${URL}/api/orders`, data);
-			console.log(response);
 			if (response.status === 201) {
-				console.log("201!");
 				cart.emptyCart();
 			}
 		} catch (err) {
