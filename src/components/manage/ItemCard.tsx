@@ -31,9 +31,9 @@ export default function ItemCard({item}: ItemIndexCardProps) {
 	}
 	
 	return (
-		<Card style={{width: "15rem"}}>
+		<Card className={"m-2"} style={{width: "15rem"}}>
 			<Card.Img variant="top" src={item.img} style={{height: "10rem"}} />
-			<Card.Body>
+			<Card.Body className={"d-flex flex-column justify-content-between"}>
 				<Card.Title>{item.name}<br />{formatPrice(item.price)}</Card.Title>
 				<Card.Text>
 					{item.description}
