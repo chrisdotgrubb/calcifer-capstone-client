@@ -20,8 +20,8 @@ export default function StoreDetailPage() {
 						<h2>{currItem.name}</h2>
 					</Col>
 				</Row>
-				<Row>
-					<Image src={currItem.img} roundedCircle style={{height: "25rem"}} />
+				<Row className={"d-flex justify-content-center align-items-center"}>
+					<Image src={currItem.img} style={{height: "25rem", width: "25rem"}} />
 				</Row>
 				<Row className={"d-flex justify-content-center"}>
 					<Col md={6} className={"d-flex justify-content-center"}>

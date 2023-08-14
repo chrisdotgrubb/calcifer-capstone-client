@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import ItemCard from "../../components/manage/ItemCard.tsx";
 import {useItemsContext} from "../../context/Context.ts";
 import {IItemsContext} from "../../context/Context.tsx";
+import Button from "react-bootstrap/Button";
 
 
 export default function ManagePage() {
@@ -13,14 +14,14 @@ export default function ManagePage() {
 		[];
 	
 	return (
-		<>
-			<h1>Manage</h1>
+		<Container className={"d-flex flex-column align-items-center"}>
+			<h1 className={"m-5"}>Manage items</h1>
 			<Link to={"/manage/add"}>
-				<h2>Add item</h2>
+				<Button className={"mb-4"}>Add item</Button>
 			</Link>
 			<Container className={"d-flex flex-wrap"}>
 				{allItems}
 			</Container>
-		</>
+		</Container>
 	);
 }
