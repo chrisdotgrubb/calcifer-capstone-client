@@ -4,7 +4,7 @@ import App from "./App.tsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {BrowserRouter} from "react-router-dom";
 
-export const URL = "https://calcifer-api.fly.dev";
+export const URL = "https://calcifer-capstone-nrvob5pwx-chrisdotgrubb.vercel.app";
 // export const URL = 'http://localhost:3001'
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
