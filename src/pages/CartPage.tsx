@@ -40,7 +40,7 @@ export default function CartPage() {
 		<>        {
 			isEmpty
 				? <h1>empty</h1>
-				: <h1>{allItems}</h1>
+				: <div>{allItems}</div>
 		}
 			<h1>{formatPrice(cart.totalPrice)}</h1>
 			<Button onClick={handleCreateOrder} disabled={cart.cartQty === 0}>Place order</Button>

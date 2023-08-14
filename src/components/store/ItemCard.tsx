@@ -18,9 +18,9 @@ export default function ItemCard({item}: ItemCardProps) {
 		<Card className="text-center mt-3 mx-5">
 			<Card.Body>
 				<Card.Title>{item.name}</Card.Title>
-				<Card.Text>
+				<Card.Body>
 					{item.description}
-				</Card.Text>
+				</Card.Body>
 				<Container>
 					<Link to={`/store/${item._id}`} state={{item}}>
 						<Button className={"m-2"} variant="outline-secondary">View Details</Button>

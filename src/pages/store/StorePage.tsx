@@ -1,5 +1,6 @@
 import {useItemsContext} from "../../context/Context.ts";
 import ItemCard from "../../components/store/ItemCard.tsx";
+import Container from "react-bootstrap/Container";
 
 export default function StorePage() {
 	const context = useItemsContext();
@@ -8,9 +9,11 @@ export default function StorePage() {
 	});
 	
 	return (
-		<>
-			<h1>Store</h1>
+		<div className={"mb-5"}>
+			<Container className={"d-flex flex-column align-items-center"}>
+				<h1>Store</h1>
+			</Container>
 			{allItems}
-		</>
+		</div>
 	);
 }
