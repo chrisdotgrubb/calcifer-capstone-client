@@ -25,7 +25,7 @@ export default function StoreDetailPage() {
 				</Row>
 				<Row className={"d-flex justify-content-center"}>
 					<Col md={6} className={"d-flex justify-content-center"}>
-						<h2>{currItem.description}</h2>
+						<p>{currItem.description}</p>
 					</Col>
 					<Col md={6} className={"d-flex justify-content-center"}>
 						<h3>{formatPrice(currItem.price)}</h3>

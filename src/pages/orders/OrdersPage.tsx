@@ -2,6 +2,7 @@ import axios from "axios";
 import {useEffect, useState} from "react";
 import OrderCard from "../../components/orders/OrderCard.tsx";
 import {URL} from "../../main.tsx";
+import Container from "react-bootstrap/Container";
 
 export interface IUser {
 	username: string;
@@ -51,7 +52,9 @@ export default function OrdersPage() {
 	
 	return (
 		<>
-			<h1>Orders</h1>
+			<Container className={"d-flex flex-column align-items-center"}>
+				<h1>Orders</h1>
+			</Container>
 			{allOrders}
 		</>
 	);
