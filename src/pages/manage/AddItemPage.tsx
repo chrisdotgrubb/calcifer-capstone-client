@@ -2,9 +2,7 @@ import {ChangeEvent, useState} from "react";
 import AddItemForm from "../../components/manage/AddItemForm.tsx";
 import axios, {AxiosResponse} from "axios";
 import {IItem, IItemsContext, useItemsContext} from "../../context/Context.ts";
-
-
-const URL = "http://localhost:3001";
+import {URL} from "../../main.tsx";
 
 export default function AddItemPage() {
 	const defaultFormItem: IItem = {

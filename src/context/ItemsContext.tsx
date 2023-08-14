@@ -1,13 +1,12 @@
 import {createContext, ReactNode, useEffect, useState} from "react";
 import axios from "axios";
 import {IItem, IItemsContext} from "./Context.ts";
+import {URL} from "../main.tsx";
+
 
 interface ItemsProviderProps {
 	children: ReactNode;
 }
-
-
-const URL = "http://localhost:3001";
 
 export const ItemsContext = createContext({} as IItemsContext);
 

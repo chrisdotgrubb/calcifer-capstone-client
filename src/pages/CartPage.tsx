@@ -3,13 +3,13 @@ import {ICartItem, useCartContext} from "../context/Context.ts";
 import {formatPrice} from "../util/format.ts";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
+import {URL} from "../main.tsx";
+
 
 interface IReqData {
 	isDelivery: boolean;
 	cartItems: ICartItem[];
 }
-
-const URL = "http://localhost:3001";
 
 export default function CartPage() {
 	// const context = useItemsContext();

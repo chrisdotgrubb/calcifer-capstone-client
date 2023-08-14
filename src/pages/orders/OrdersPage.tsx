@@ -1,8 +1,7 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
 import OrderCard from "../../components/orders/OrderCard.tsx";
-
-const URL = "http://localhost:3001";
+import {URL} from "../../main.tsx";
 
 export interface IUser {
 	username: string;
@@ -37,7 +36,6 @@ export default function OrdersPage() {
 	async function getOrders() {
 		try {
 			const response = await axios.get(`${URL}/api/orders/`);
-			console.log(response);
 			setOrders(response.data);
 		} catch (err) {
 			console.log(err);

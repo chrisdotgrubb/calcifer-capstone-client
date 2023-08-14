@@ -4,9 +4,9 @@ import {ChangeEvent, FormEvent, useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 import axios from "axios";
 import {IItem, useItemsContext} from "../../context/Context.ts";
+import {URL} from "../../main.tsx";
 
 
-const URL = "http://localhost:3001";
 export default function EditItemPage() {
 	const editedItem = useLocation().state.item;
 	const [formItem, setFormItem] = useState(editedItem as IItem);
