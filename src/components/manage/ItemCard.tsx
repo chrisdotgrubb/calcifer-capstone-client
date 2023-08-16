@@ -5,12 +5,11 @@ import {IItem, IItemsContext, useItemsContext} from "../../context/Context.ts";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
 import {formatPrice} from "../../util/format.ts";
-
+import { URL } from "../../main.tsx";
 interface ItemIndexCardProps {
 	item: IItem;
 }
 
-const URL = "http://localhost:3001";
 
 export default function ItemCard({item}: ItemIndexCardProps) {
 	const context: IItemsContext = useItemsContext();
