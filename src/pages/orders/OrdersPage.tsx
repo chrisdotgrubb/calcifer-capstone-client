@@ -16,7 +16,7 @@ export interface IOrder {
 	isDelivery: boolean;
 	isPaid: boolean;
 	user: IUser;
-	orderItems: IOrderItem;
+	orderItems: IOrderItem[];
 	createdAt: string;
 }
 
